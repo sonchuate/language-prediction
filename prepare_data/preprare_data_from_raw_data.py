@@ -120,14 +120,14 @@ en_sentences, en_sub_strings = prepare_sentences_and_sub_strings(en_data)
 with open('output.txt','w',encoding="utf-8") as f_out:
     # for _ in range(int(SAMPLE_SIZE/len(vi_sentences))):
     count = 0
-    while count < SAMPLE_SIZE:
-        for s in vi_sentences:
-            if len(s) < 10:
-                continue
-            new_string, words = insert_random_strings_between_spaces(s, en_sub_strings)
-            if len(new_string) > 199:
-                continue
-            labels = " ".join(['vi'  if i[1] == 'original' else 'en' for i in words ])
-            # print(len(new_string))
-            f_out.write(f'{clean_up_spaces(new_string)}\t{labels}\n')
-            count += 1
+    # while count < SAMPLE_SIZE:
+    for s in vi_sentences:
+        if len(s) < 10:
+            continue
+        new_string, words = insert_random_strings_between_spaces(s, en_sub_strings)
+        if len(new_string) > 199:
+            continue
+        labels = " ".join(['vi'  if i[1] == 'original' else 'en' for i in words ])
+        # print(len(new_string))
+        f_out.write(f'{clean_up_spaces(new_string)}\t{labels}\n')
+        # count += 1
