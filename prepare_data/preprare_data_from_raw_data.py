@@ -59,7 +59,7 @@ for c in "0123456789":
     en_data = en_data.replace(c, '')
 
 # loại bỏ kí tự lạ
-for c in "$%&\"()*+-/;[]‘“”…{|}·":
+for c in "$%&\"()*+–—/;[]‘“”…{|}·<>_":
     en_data = en_data.replace(c, '')
     vi_data = vi_data.replace(c, '')
 
@@ -118,9 +118,13 @@ vi_sentences, vi_sub_strings = prepare_sentences_and_sub_strings(vi_data)
 en_sentences, en_sub_strings = prepare_sentences_and_sub_strings(en_data)
 
 with open('output.txt','w',encoding="utf-8") as f_out:
-    for s in vi_sentences:
-        if len(s) < 10:
-            continue
-        new_string, words = insert_random_strings_between_spaces(s, en_sub_strings)
-        labels = " ".join(['vi'  if i[1] == 'original' else 'en' for i in words ])
-        f_out.write(f'{clean_up_spaces(new_string)}\t{labels}\n')
+    for _ in range(int(SAMPLE_SIZE/len(vi_sentences))):
+        for s in vi_sentences:
+            if len(s) < 10:
+                continue
+            if len(s) > 199:
+                continue
+            new_string, words = insert_random_strings_between_spaces(s, en_sub_strings)
+            labels = " ".join(['vi'  if i[1] == 'original' else 'en' for i in words ])
+            # print(len(new_string))
+            f_out.write(f'{clean_up_spaces(new_string)}\t{labels}\n')
