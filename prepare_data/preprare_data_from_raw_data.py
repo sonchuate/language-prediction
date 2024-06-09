@@ -43,7 +43,7 @@ def prepare_sentences_and_sub_strings(data):
                 sub_strings.append(ss)
     return sentences, sub_strings
 
-with open('english_raw.txt','r',encoding="utf-8") as f_in_e:
+with open('english_raw_remove_link.txt','r',encoding="utf-8") as f_in_e:
     en_data = f_in_e.read()
     en_data= en_data.replace('-',' ')
     en_data.replace('\n',' ')
@@ -59,7 +59,7 @@ for c in "0123456789":
     en_data = en_data.replace(c, '')
 
 # loại bỏ kí tự lạ
-for c in "$%&\"()*+–—/;[]‘“”…{|}·<>_~©ª¯´»½¿\^`":
+for c in "$%&\"()*+–—/;[]‘“”…{|}·<>_~©ª;¯´»½п¿\^`=@":
     en_data = en_data.replace(c, '')
     vi_data = vi_data.replace(c, '')
 
