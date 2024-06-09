@@ -5,7 +5,7 @@ def insert_random_strings_between_spaces(main_string, insert_strings):
     words = [(word, 'original') for word in main_string.split()]
     
     # Chọn số lượng chuỗi sẽ được chèn ngẫu nhiên (từ 1 đến 3)
-    num_inserts = random.randint(1, 3)
+    num_inserts = random.randint(1, 4)
     # Chọn ngẫu nhiên các chuỗi sẽ được chèn từ danh sách B
     strings_to_insert = random.sample(insert_strings, num_inserts)
     
@@ -59,12 +59,12 @@ for c in "0123456789":
     en_data = en_data.replace(c, '')
 
 # loại bỏ kí tự lạ
-for c in "$%&\"()*+–—/;[]‘“”…{|}·<>_":
+for c in "$%&\"()*+–—/;[]‘“”…{|}·<>_~©ª¯´»½¿\^`":
     en_data = en_data.replace(c, '')
     vi_data = vi_data.replace(c, '')
 
 # loại bỏ kí tự lạ
-for c in "?!:":
+for c in "?!:#":
     en_data = en_data.replace(c, '.')
     vi_data = vi_data.replace(c, '.')
 
